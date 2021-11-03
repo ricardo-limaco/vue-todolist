@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+  <title>Vue To Do List</title>
+</head>
+
+<body>
+
+  <header class="container">
+    <h1 class="text-center my-5 fw-bold">Hello Vueoolean - Todolist</h1>
+  </header>
+
+  <main id="root">
+    <section class="container">
+
+      <div class="row justify-content-center">
+        <div class="col-6">
+
+          <!-- Input -->
+          <div class="input-group mb-5">
+            <!-- Input Color -->
+            <div class="input-group-text">
+              <input type="color" v-model="newTaskColor">
+            </div>
+            <!-- Input Text -->
+            <input class="form-control" placeholder="Vorrei..." v-model="newTaskText" v-on:keyup.enter="onAddClick">
+            <!-- Btn Aggiungi -->
+            <button class="btn btn-outline-primary" type="button" @click="onAddClick">Aggiungi</button>
+          </div>
+
+          <!-- Lista  -->
+          <div class="list-group">
+            <!-- Elemento -->
+            <div class="list-group-item d-flex align-items-center py-3" v-for="element, i in tasksList">
+              <!-- Colore -->
+              <div class="list-group-item-border" v-bind:style="'background-color: ' + element.color"></div>
+              <!-- Test -->
+              <label class="flex-fill">{{ i }} - {{ element.text }}</label>
+              <!-- Btn Cancella -->
+              <button type="button" class="btn-close" aria-label="Close" @click="onDeleteClick(i)"></button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+  <script src="js/script.js"></script>
+</body>
+
+</html>
